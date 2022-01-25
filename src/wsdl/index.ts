@@ -442,8 +442,11 @@ export class WSDL {
           value = Number(text);
         } else if (name === 'bool' || name === 'boolean') {
           value = text.toLowerCase() === 'true' || text === '1';
-        } else if (name === 'dateTime' || name === 'date') {
+        } else if (name === 'dateTime') {
           value = new Date(text);
+        } else if (name === 'date') {
+          // https://www.w3.org/TR/xmlschema-2/#date
+          value = new Date(text.replace(/^(-?.{10})(.*)$/, "$1T00:00:00$2"));
         } else {
           if (this.options.preserveWhitespace) {
             text = originalText;
