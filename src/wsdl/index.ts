@@ -819,7 +819,7 @@ export class WSDL {
 
                   let unqualified = false;
                   // Check qualification form for local elements
-                  if (childSchemaObject.$name && childSchemaObject.targetNamespace === undefined) {
+                  if (childSchemaObject.$name && childSchemaObject.$targetNamespace === undefined) {
                     if (childSchemaObject.$form === 'unqualified') {
                       unqualified = true;
                     } else if (childSchemaObject.$form === 'qualified') {
