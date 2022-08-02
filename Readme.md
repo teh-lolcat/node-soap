@@ -127,7 +127,7 @@ GitHub issues have been disabled to focus on pull requests. ([#731](https://gith
   var url = 'http://example.com/wsdl?wsdl';
   var args = {name: 'value'};
 
-  soap.createClient(url, function(err, client) {
+  soap.createClient(url, {}, function(err, client) {
       client.MyFunction(args, function(err, result) {
           console.log(result);
       });
@@ -161,7 +161,7 @@ Construct a `Promise<Client>` with the given WSDL file.
   // async/await
   var client = await soap.createClientAsync(url);
   var result = await client.MyFunctionAsync(args);
-  console.log(await result);
+  console.log(result[0]);
 ```
 
 Note: for versions of node >0.10.X, you may need to specify `{connection: 'keep-alive'}` in SOAP headers to avoid truncation of longer chunked responses.
